@@ -2,13 +2,14 @@ module.exports = (function() {
     const cryptho = require("./CryptoService");
     var store = {};
 
+
     return {
         put: function(data, password) {
             return new Promise(function(resolve, reject) {
                 cryptho.deriveKey(password)
                     .then(key => {
-                        data = cryptho.encrypt(data, key);
-                        (store[key]) ? store[key].push(data): store[key] = [data];
+                        cipher = cryptho.encrypt(data, key);
+                        (store[key]) ? store[key].push(cipher): store[key] = [cipher];
                         resolve();
                     });
             });
@@ -19,7 +20,10 @@ module.exports = (function() {
             return new Promise(function(resolve, reject) {
                 cryptho.deriveKey(password)
                     .then(key => {
-                        resolve(store[key]);
+                        data = store[key] ? store[key]
+                            .map(cipher => cryptho.decrypt(cipher, key)
+                                .then(plain => plain, err => reject(err))) : [];
+                        resolve(data);
                     })
             });
         },
