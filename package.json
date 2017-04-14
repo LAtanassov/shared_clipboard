@@ -1,17 +1,17 @@
 {
-  "name": "sharr",
+  "name": "shared_clipboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "express": "4.15.2",
     "body-parser": "1.17.1",
-    "rx": "4.1.0",
-    "dgram": "1.0.1"
+    "rx": "4.1.0"
   },
   "devDependencies": {
     "sinon":"2.1.0"
   },
   "scripts": {
-    "test": "mocha --recursive"
+    "start": "node shared_clipboard.js",
+    "test": "mocha --recursive './services/*.spec.js'"
   }
 }

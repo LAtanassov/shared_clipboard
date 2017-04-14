@@ -1,4 +1,4 @@
-var store = require('../../src/services/ClipboardStore');
+var store = require('./ClipboardStore');
 
 var assert = require('assert');
 var sinon = require('sinon');

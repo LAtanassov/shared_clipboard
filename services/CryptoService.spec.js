@@ -1,5 +1,5 @@
 // no crypto algorithm tests - only functionality
-var crypto = require('../../src/services/CryptoService');
+var crypto = require('./CryptoService');
 
 var assert = require('assert');
 var sinon = require('sinon');
